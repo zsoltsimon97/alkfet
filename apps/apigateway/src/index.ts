@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server'
 import { Hono, type Context } from 'hono'
+import type { ContentfulStatusCode } from 'hono/utils/http-status'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import axios, { AxiosError } from 'axios'
@@ -52,14 +53,16 @@ const forward = async (c: Context) => {
       validateStatus: () => true,
     })
 
-    return c.json(response.data, response.status)
+    return c.json(response.data, { status: response.status as ContentfulStatusCode })
   } catch (error) {
     const axiosError = error as AxiosError<{ message?: string }>
     if (axiosError.response) {
-      return c.json(axiosError.response.data, axiosError.response.status)
+      return c.json(axiosError.response.data, {
+        status: axiosError.response.status as ContentfulStatusCode,
+      })
     }
 
-    return c.json({ message: axiosError.message ?? 'Gateway error' }, 502)
+    return c.json({ message: axiosError.message ?? 'Gateway error' }, { status: 502 })
   }
 }
 

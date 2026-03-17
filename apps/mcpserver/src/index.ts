@@ -14,10 +14,14 @@ const taskPriority = z.enum(['low', 'medium', 'high'])
 const projectStatus = z.enum(['active', 'archived'])
 
 const toCallResult = (data: unknown) => {
-  const structuredContent = Array.isArray(data) ? { items: data } : (data ?? {})
+  const structuredContent: Record<string, unknown> = Array.isArray(data)
+    ? { items: data }
+    : data && typeof data === 'object'
+      ? (data as Record<string, unknown>)
+      : { value: data }
 
   return {
-    content: [{ type: 'text', text: JSON.stringify(data) }],
+    content: [{ type: 'text' as const, text: JSON.stringify(data) }],
     structuredContent,
   }
 }
@@ -27,7 +31,7 @@ const toErrorResult = (error: unknown) => {
   const status = axiosError.response?.status ?? 502
   const message = axiosError.response?.data?.message ?? axiosError.message ?? 'Gateway error'
   return {
-    content: [{ type: 'text', text: JSON.stringify({ status, message }) }],
+    content: [{ type: 'text' as const, text: JSON.stringify({ status, message }) }],
     structuredContent: { status, message },
   }
 }

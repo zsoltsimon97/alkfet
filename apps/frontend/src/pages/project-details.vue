@@ -61,18 +61,18 @@
   const taskEditing = ref<Task | null>(null)
   const tasks = ref<Task[]>([])
 
-  const projectStatusOptions = [
+  const projectStatusOptions: Array<{ title: string; value: ProjectStatus }> = [
     { title: 'Aktív', value: 'active' },
     { title: 'Archivált', value: 'archived' },
   ]
 
-  const taskStatusOptions = [
+  const taskStatusOptions: Array<{ title: string; value: TaskStatus }> = [
     { title: 'Teendő', value: 'todo' },
     { title: 'Folyamatban', value: 'in_progress' },
     { title: 'Kész', value: 'done' },
   ]
 
-  const taskPriorityOptions = [
+  const taskPriorityOptions: Array<{ title: string; value: TaskPriority }> = [
     { title: 'Alacsony', value: 'low' },
     { title: 'Közepes', value: 'medium' },
     { title: 'Magas', value: 'high' },

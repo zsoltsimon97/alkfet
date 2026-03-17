@@ -41,7 +41,7 @@
   const createDialog = ref(false)
   const createLoading = ref(false)
 
-  const statusOptions = [
+  const statusOptions: Array<{ title: string; value: ProjectStatus }> = [
     { title: 'Aktív', value: 'active' },
     { title: 'Archivált', value: 'archived' },
   ]

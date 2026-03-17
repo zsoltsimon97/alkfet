@@ -66,7 +66,12 @@
 
   const search = ref('')
 
-  const headers = [
+  const headers: Array<{
+    title: string
+    key: string
+    align?: 'start' | 'end' | 'center'
+    sortable?: boolean
+  }> = [
     { title: 'Cím', key: 'title', align: 'start' },
     { title: 'Állapot', key: 'status' },
     { title: 'Prioritás', key: 'priority' },
