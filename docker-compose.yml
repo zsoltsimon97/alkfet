@@ -36,5 +36,19 @@ services:
     depends_on:
       - backend
 
+  mcpserver:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    environment:
+      BACKEND_URL: http://backend:3000
+      PORT: 4100
+    ports:
+      - "4100:4100"
+    volumes:
+      - ./apps/mcpserver:/app
+    depends_on:
+      - backend
+
 volumes:
   mariadb_data:
