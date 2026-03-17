@@ -13,16 +13,28 @@ services:
   backend:
     image: node:22-alpine
     working_dir: /app
-    command: sh -c "npm install && npx prisma generate && npm run start:dev"
+    command: sh -c "npm install && npx prisma migrate deploy && npm run start:dev"
     environment:
       DATABASE_URL: mysql://root:alkfet@mariadb:3306/alkfet
       PORT: 3000
-    ports:
-      - "3000:3000"
     volumes:
       - ./apps/backend:/app
     depends_on:
       - mariadb
+
+  apigateway:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    environment:
+      BACKEND_URL: http://backend:3000
+      PORT: 4000
+    ports:
+      - "3000:4000"
+    volumes:
+      - ./apps/apigateway:/app
+    depends_on:
+      - backend
 
 volumes:
   mariadb_data:
