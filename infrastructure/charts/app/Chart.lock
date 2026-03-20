@@ -1,0 +1,18 @@
+dependencies:
+- name: backend
+  repository: file://../backend
+  version: 0.0.1
+- name: apigateway
+  repository: file://../apigateway
+  version: 0.0.1
+- name: mcpserver
+  repository: file://../mcpserver
+  version: 0.0.1
+- name: frontend
+  repository: file://../frontend
+  version: 0.0.1
+- name: mariadb
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 25.0.5
+digest: sha256:3e52a5342164e1d44cb8387fcf565f9cc262c7d18c4a7065ba5af6ef91ed9389
+generated: "2026-03-21T11:08:08.095043735+01:00"

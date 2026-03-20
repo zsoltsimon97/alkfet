@@ -1,0 +1,22 @@
+{
+  "name": "alkfet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --filter '*' --continue dev",
+    "ci": "pnpm run docker:build --push",
+    "build": "pnpm --filter '*' --continue build",
+    "format": "pnpm --filter '*' --continue format",
+    "docker:build": "pnpm --filter '*' docker:build",
+    "docker:push": "pnpm --filter '*' docker:push",
+    "start": "pnpm --filter '*' --continue start",
+    "lint": "pnpm --filter '*' --continue lint",
+    "test": "pnpm --filter '*' --continue test",
+    "k8s-deploy": "helm dependency build infrastructure/charts/app && helm upgrade --install alkfet infrastructure/charts/app --namespace alkfet --create-namespace"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.27.0"
+}

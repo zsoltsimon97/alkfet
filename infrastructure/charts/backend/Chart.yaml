@@ -1,0 +1,13 @@
+apiVersion: v2
+name: backend
+description: A Helm chart for deploying the alkfet backend service (NestJS)
+type: application
+version: 0.0.1
+appVersion: "0.0.1"
+keywords:
+  - backend
+  - nestjs
+  - api
+home: https://github.com/zsoltsimon97/alkfet
+sources:
+  - https://github.com/zsoltsimon97/alkfet
