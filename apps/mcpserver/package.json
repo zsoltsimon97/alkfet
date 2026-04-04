@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "docker:build": "docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/zsoltsimon97/alkfet:mcpserver-latest .",
+    "docker:build": "docker buildx build -t ghcr.io/zsoltsimon97/alkfet:mcpserver-latest .",
     "docker:push": "docker push ghcr.io/zsoltsimon97/alkfet:mcpserver-latest",
     "start": "node dist/index.js",
     "build": "tsc -p tsconfig.json"
