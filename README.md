@@ -10,9 +10,9 @@ The system consists of multiple components:
 
 - **Frontend** – Vue 3 + Vite
 - **Backend** – NestJS + Prisma
-- **API Gateway** – Node.js (gateway layer)
-- **MCP Server** – separate service
-- **Database** – Prisma ORM (likely PostgreSQL)
+- **API Gateway** – Hono (gateway layer)
+- **MCP Server** – Node.js
+- **Database** – Prisma ORM (MySQL)
 - **Infrastructure** – Docker + Kubernetes (Helm charts)
 
 Frontend → API Gateway → Backend → Database
@@ -25,7 +25,7 @@ apps/
   frontend/       → Vue 3 UI
   backend/        → NestJS API
   apigateway/     → Gateway layer
-  mcpserver/      → Additional service
+  mcpserver/      → MCP Server
 
 infrastructure/
   charts/         → Kubernetes Helm charts
@@ -53,7 +53,7 @@ This will start:
 - frontend
 - backend
 - gateway
-- other services
+- mcp server
 
 ---
 
