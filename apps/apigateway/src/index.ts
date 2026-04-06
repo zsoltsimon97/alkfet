@@ -10,6 +10,8 @@ const app = new Hono()
 app.use('*', logger())
 app.use('*', cors())
 
+app.get('/healthcheck', (c) => c.text('ok'))
+
 const backendBase = process.env.BACKEND_URL ?? 'http://localhost:3000'
 const backendUrl = new URL(backendBase)
 const backendPath = backendUrl.pathname.replace(/\/$/, '')

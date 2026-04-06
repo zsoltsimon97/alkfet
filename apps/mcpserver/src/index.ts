@@ -265,6 +265,12 @@ const handleMcpRequest = async (
 
 const server = createServer(async (req, res) => {
   const url = req.url ?? '/'
+  if (req.method === 'GET' && url === '/healthcheck') {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/plain')
+    res.end('ok')
+    return
+  }
   if (url.startsWith('/mcp')) {
     await handleMcpRequest(req, res)
     return
