@@ -1,0 +1,34 @@
+apiVersion: v2
+name: app
+description: A Helm chart for deploying the complete alkfet application stack
+type: application
+version: 0.0.1
+appVersion: "0.0.1"
+keywords:
+  - alkfet
+  - full-stack
+  - umbrella-chart
+home: https://github.com/zsoltsimon97/alkfet
+sources:
+  - https://github.com/zsoltsimon97/alkfet
+dependencies:
+  - name: backend
+    version: 0.0.1
+    repository: file://../backend
+    condition: backend.enabled
+  - name: apigateway
+    version: 0.0.1
+    repository: file://../apigateway
+    condition: apigateway.enabled
+  - name: mcpserver
+    version: 0.0.1
+    repository: file://../mcpserver
+    condition: mcpserver.enabled
+  - name: frontend
+    version: 0.0.1
+    repository: file://../frontend
+    condition: frontend.enabled
+  - name: mariadb
+    version: 25.0.5
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: mariadb.enabled

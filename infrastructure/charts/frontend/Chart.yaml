@@ -1,0 +1,13 @@
+apiVersion: v2
+name: frontend
+description: A Helm chart for deploying the alkfet Frontend service (Vue + Nginx)
+type: application
+version: 0.0.1
+appVersion: "0.0.1"
+keywords:
+  - frontend
+  - vue
+  - nginx
+home: https://github.com/zsoltsimon97/alkfet
+sources:
+  - https://github.com/zsoltsimon97/alkfet
